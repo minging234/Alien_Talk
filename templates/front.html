@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<title>Alien_Talk</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+                    
+  #pic {
+      width:max-content;
+      height: 100;
+      margin-left:150px;
+  }
+
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#encrypt" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Encrypt</a>
+    <a href="#decrypt" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Decrypt</a>
+    <a href="#future_encrypt" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Talk to Future</a>
+    <a href="#present_decrypt" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Hear from History</a>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <img src={{ url_for('static', filename='img/stars.jpg') }} height="200" width="1500">
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">Alien_Talk</h2>
+    <p class="w3-opacity"><i>start making your connection</i></p>
+    <p class="w3-justify"> Talk to your peers in a perfect secure channel, only people you want can understand your message</p>
+  </div>
+
+  <!-- The Encrypt Section -->
+  <div class="w3-black" id="encrypt">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">Translate words to mystery code</h2>
+      <p class="w3-opacity w3-center"><i>Remember your keywords please!</i></p><br>
+
+      <form action="/encrypt" method="post">
+        <ul class="w3-ul w3-border w3-white w3-text-grey">
+            <input type="text" placeholder="input your words" name="plaint_text" size="83">
+          </ul>
+    
+          <ul class="w3-ul w3-border w3-white w3-text-grey">
+            <input type="text" placeholder="input your key" name="key" size="83">
+          </ul>
+          
+          <br>
+        <input type="submit" value="get the code!">
+      </form>
+
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- The Decrypt Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="decrypt">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+          <h2 class="w3-wide w3-center">Understand mystery code</h2>
+          <p class="w3-opacity w3-center"><i>Recall your keywords please!</i></p><br>
+    
+          <form action="/decrypt" method="post">
+            <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <input type="text" placeholder="input your codes" name="cipher_text" size="83">
+              </ul>
+        
+              <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <input type="text" placeholder="input your key" name="key" size="83">
+              </ul>
+              
+              <br>
+            <input type="submit" value="get the code!">
+          </form>
+    
+          <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+    
+          </div>
+        </div>
+  </div>
+
+  <!-- The future_encrypt Section -->
+  <div class="w3-black" id="future_encrypt">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+        <h2 class="w3-wide w3-center">Say something to the future</h2>
+        <p class="w3-opacity w3-center"><i>Remember your keywords and date please!</i></p><br>
+  
+        <form action="/future_encrypt" method="post">
+          <ul class="w3-ul w3-border w3-white w3-text-grey">
+              <input type="text" placeholder="input your words" name="plaint_text" size="83">
+            </ul>
+      
+            <ul class="w3-ul w3-border w3-white w3-text-grey">
+              <input type="text" placeholder="input your key" name="key" size="83">
+            </ul>
+
+            <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <input type="text" placeholder="input the date" name="date" size="83">
+              </ul>
+            
+            <br>
+          <input type="submit" value="get the code!">
+        </form>
+  
+        <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+  
+        </div>
+      </div>
+    </div>
+
+
+  <!-- The Present Decrypt Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="present_decrypt">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+          <h2 class="w3-wide w3-center">Hear from the history</h2>
+          <p class="w3-opacity w3-center"><i>Recall your keywords and date please!</i></p><br>
+    
+          <form action="/present_decrypt" method="post">
+            <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <input type="text" placeholder="input your codes" name="code" size="83">
+              </ul>
+        
+              <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <input type="text" placeholder="input your key" name="key" size="83">
+              </ul>
+
+              <ul class="w3-ul w3-border w3-white w3-text-grey">
+                  <input type="text" placeholder="input the date" name="date" size="83">
+                </ul>
+
+              <br>
+            <input type="submit" value="get the code!">
+          </form>
+    
+          <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+
+          </div>
+        </div>
+  </div>
+
+  <form action="/universe_status" method="get">
+    <input type="submit" value="get the universe status!" style="float:middle">
+  </form>
+
+
+<!-- End Page Content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+</footer>
+
+</body>
+</html>
