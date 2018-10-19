@@ -70,4 +70,4 @@ def universe_status():
     return jsonify({'current_date': str(god.gen_current_time_signature()), "public_key": util.get_public_key()})
 
 
-app.run(port=5000)
+app.run(port=5000, host='0.0.0.0')
